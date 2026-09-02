@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luciana Carrascal - Joropo & Repostería</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d1b3d 0%, #1a1a2e 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #e8a87c 0%, #d4788c 50%, #c38d9e 100%);
+            padding: 2.5rem 0;
+            text-align: center;
+            border-bottom: 4px solid #f0c27f;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #f0c27f;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #f0c27f, #e8a87c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #2d1b3d;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Sections */
+        .section {
+            background: rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #f0c27f;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(5px);
+        }
+
+        h2 {
+            color: #f0c27f;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            font-size: 2rem;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(240,194,127,0.15), rgba(232,168,124,0.1));
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(240,194,127,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(240,194,127,0.2);
+        }
+
+        .info-card h3 {
+            color: #f0c27f;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .info-card p {
+            color: #d4c5e0;
+        }
+
+        /* Joropo Section */
+        .joropo-badge {
+            background: linear-gradient(135deg, #f0c27f, #e8a87c);
+            color: #2d1b3d;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(240,194,127,0.4);
+        }
+
+        /* Pasiones */
+        .passions-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .passion-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: rgba(240,194,127,0.1);
+            border-radius: 15px;
+            min-width: 200px;
+            border: 2px solid rgba(240,194,127,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .passion-item:hover {
+            background: rgba(240,194,127,0.2);
+            transform: scale(1.05);
+        }
+
+        .passion-emoji {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .passion-label {
+            color: #f0c27f;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .passion-desc {
+            color: #d4c5e0;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Repostería Gallery */
+        .reposteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .reposteria-item {
+            background: linear-gradient(135deg, rgba(232,168,124,0.2), rgba(212,120,140,0.2));
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(240,194,127,0.3);
+        }
+
+        .reposteria-item .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reposteria-item p {
+            color: #f0c27f;
+            font-weight: 600;
+        }
+
+        /* Metas */
+        .goals-list {
+            list-style: none;
+            font-size: 1.1rem;
+            line-height: 2.2;
+        }
+
+        .goals-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(240,194,127,0.2);
+            transition: padding-left 0.3s ease;
+        }
+
+        .goals-list li:hover {
+            padding-left: 10px;
+            color: #f0c27f;
+        }
+
+        .goals-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0,0,0,0.4);
+            border-top: 2px solid #f0c27f;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f0c27f, #e8a87c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2d1b3d;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+
+            .passion-item {
+                min-width: 150px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+
+        /* Decorative elements */
+        .deco-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #f0c27f, #e8a87c);
+            margin: 1rem 0;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-img">LC</div>
+        <h1>Luciana Carrascal</h1>
+        <p class="subtitle"> Joropo & Repostería </p>
+    </header>
+
+    <div class="container">
+        <!-- Sobre Mí -->
+        <section class="section">
+            <h2><span class="icon"></span> Sobre Mí</h2>
+            <div class="deco-line"></div>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                ¡Hola! Soy <strong>Luciana Carrascal</strong>, una joven de <strong>14 años</strong> apasionada por la cultura llanera y el arte de la repostería. 
+                Nací el <strong>26 de abril</strong> y vivo en la hermosa ciudad de <strong>Villavicencio</strong>, 
+                capital del Meta. Me encanta expresar mi creatividad a través de la música llanera y creando deliciosos postres.
+            </p>
+        </section>
+
+        <!-- Información Personal -->
+        <section class="section">
+            <h2><span class="icon">📋</span> Información Personal</h2>
+            <div class="deco-line"></div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🎂 Fecha de Nacimiento</h3>
+                    <p>26 de Abril</p>
+                    <p style="margin-top: 0.5rem; color: #f0c27f;">14 años</p>
+                </div>
+                <div class="info-card">
+                    <h3>📍 Ciudad</h3>
+                    <p>Villavicencio</p>
+                    <p style="margin-top: 0.5rem; color: #f0c27f;">Meta, Colombia</p>
+                </div>
+                <div class="info-card">
+                    <h3>🏫 Institución Educativa</h3>
+                    <p>Gimnasio Campestre La Fontana</p>
+                    <p style="margin-top: 0.5rem; color: #f0c27f;">Estudiante</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mis Pasiones -->
+        <section class="section">
+            <h2><span class="icon">💖</span> Mis Pasiones</h2>
+            <div class="deco-line"></div>
+            <div class="passions-container">
+                <div class="passion-item">
+                    <div class="passion-emoji">🎶</div>
+                    <div class="passion-label">Joropo</div>
+                    <div class="passion-desc">Amo la música llanera, el arpa, el cuatro y las maracas. El joropo es mi conexión con las raíces de mi tierra.</div>
+                </div>
+                <div class="passion-item">
+                    <div class="passion-emoji"></div>
+                    <div class="passion-label">Repostería</div>
+                    <div class="passion-desc">Me encanta crear postres deliciosos, decorar tortas y experimentar con nuevos sabores y técnicas.</div>
+                </div>
+                <div class="passion-item">
+                    <div class="passion-emoji">🎨</div>
+                    <div class="passion-label">Creatividad</div>
+                    <div class="passion-desc">Disfruto expresarme a través del arte, ya sea en la cocina o en la música llanera.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Repostería -->
+        <section class="section">
+            <h2><span class="icon">🍰</span> Mi Amor por la Repostería</h2>
+            <div class="deco-line"></div>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                La repostería es mi forma de crear felicidad. Cada postre que preparo lleva un toque especial de cariño y creatividad.
+            </p>
+            <div class="reposteria-grid">
+                <div class="reposteria-item">
+                    <div class="emoji">🎂</div>
+                    <p>Tortas Decoradas</p>
+                </div>
+                <div class="reposteria-item">
+                    <div class="emoji">🧁</div>
+                    <p>Cupcakes</p>
+                </div>
+                <div class="reposteria-item">
+                    <div class="emoji">🍪</div>
+                    <p>Galletas</p>
+                </div>
+                <div class="reposteria-item">
+                    <div class="emoji">🍮</div>
+                    <p>Postres Típicos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Joropo -->
+        <section class="section">
+            <h2><span class="icon">🎵</span> Mi Amor por el Joropo</h2>
+            <div class="deco-line"></div>
+            <div class="joropo-badge"> Cultura Llanera 🎶</div>
+            <p style="font-size: 1.1rem; margin: 1rem 0; line-height: 1.8;">
+                El joropo es más que música para mí, es una forma de vida. Representa la identidad de mi tierra, 
+                los llanos orientales de Colombia. Me conecta con mis raíces y me llena de orgullo ser llanera.
+            </p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3> Instrumentos</h3>
+                    <p>Arpa, Cuatro y Maracas</p>
+                </div>
+                <div class="info-card">
+                    <h3> Baile</h3>
+                    <p>Joropo llanero tradicional</p>
+                </div>
+                <div class="info-card">
+                    <h3>🌾 Tradición</h3>
+                    <p>Cultura de los llanos colombianos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metas -->
+        <section class="section">
+            <h2><span class="icon">🌟</span> Mis Metas</h2>
+            <div class="deco-line"></div>
+            <ul class="goals-list">
+                <li> <strong>Seguir aprendiendo</strong> sobre repostería y crear postres cada vez más especiales</li>
+                <li>🎯 <strong>Preservar la cultura llanera</strong> y compartir el joropo con más personas</li>
+                <li>🎯 <strong>Mantener el equilibrio</strong> entre mis pasiones y mis estudios</li>
+                <li>🎯 <strong>Representar con orgullo</strong> a Villavicencio y los llanos orientales</li>
+                <li>🎯 <strong>Seguir creciendo</strong> como persona y perseguir mis sueños</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p style="font-size: 1.2rem; color: #f0c27f; font-weight: bold;">
+            Luciana Carrascal
+        </p>
+        <p style="margin-top: 0.5rem; color: #d4c5e0;">
+            Villavicencio | Gimnasio Campestre La Fontana | 2026
+        </p>
+        <div class="social-links">
+            <a href="#" title="Instagram">IG</a>
+            <a href="#" title="TikTok">TK</a>
+            <a href="#" title="Facebook">FB</a>
+        </div>
+    </footer>
+</body>
+</html>
